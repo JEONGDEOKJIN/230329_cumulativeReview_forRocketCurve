@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+                
+        .button-div {
+            border: 1px solid black;
+            width: 100px;
+            height: 50px;
+            background-color: aqua;
+            border-radius: 12px;
+            box-shadow: 1px 1px 1px black;  
+                /* 세번째 건 : 번짐 정도 */
+
+            /* 글자를 넣으면 가운데로 올것임 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* 올라갔을 때 손가락 */
+            cursor:  pointer;
+
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+    
+    <!-- 인풋되는 데이터들 -->
+    <label for=""> 이름 </label>
+    <input type="text">
+    
+    <label for=""> 나이 </label>
+    <input type="text">
+    
+    <label for=""> 내용 </label>
+    <input type="text">
+
+
+    <!-- 추가될 공간 -->
+    <ul id="tables">
+
+        <li></li>
+
+    </ul>
+
+    <!-- 인풋 트리거 -->
+    <div class="button-div" onclick="divBtn()"> 
+        버튼임!🤟
+    </div>
+
+
+
+</body>
+
+<script>
+
+// 🟦 전역변수 객체 
+
+let objArr = [];
+    // [코딩 패턴] ⭐⭐⭐⭐⭐⭐⭐⭐  
+        // 생성함수로 '객체' 를 만들고 > '배열' 에 넣어주는게 코딩 패턴 ⭐⭐⭐⭐⭐ 
+    
+    // [생각해볼 점] 왜 이렇게 하지? 
+        // 만약, '배열' 에 넣지 않는다면? ⭐⭐⭐⭐⭐ 
+
+
+
+// 🟦 버튼 누르면 > 객체 생성 및 배열 추가 > render 하기 
+function divBtn() {
+    // console.log("눌리는지 확인")
+
+    addArr();
+
+    render();
+}
+
+
+
+function addArr() {
+
+    // 1. input 에서 데이터 받아오기 
+    let inputValue = document.querySelectorAll("input")
+        
+        // 1.1 해당 변수의 데이터 타입 알고 > 값 가져와보기 ⭐⭐⭐ 
+            // 이거에 따라서 써야하는 명령어가 다르기 때문에 ⭐⭐⭐  
+            console.log(inputValue[0].value)        // name
+            console.log(inputValue[1].value)        // age
+            console.log(inputValue[2].value)        // 내용
+            
+            // console.log(typeof inputValue)
+            // [궁금증⭐⭐⭐⭐⭐❓❓❓❓❓]
+                // typeof inputValue = object
+                // 여기에서 obejct 라고 해서! '객체' 라고 생각하면 안 돼. 
+                // 이 object 가 '배열' 일 수 있음.       
+
+    // 2. 가져온 데이터를 변수로 할당하기 
+
+        name = inputValue[0].value
+        age = inputValue[1].value
+        content = inputValue[2].value
+
+            console.log("이름, 나이, 내용 : " + name, age, content);
+
+        // 2.1 foreach 이거 왜 안 되나? 
+            // inputValue.forEach( function(i) {
+                
+            //     if (i == 0) {
+            //         let name = inputValue[i].value;
+            //     } else if (i == 1) {
+            //         let age = inputValue[i].value; 
+            //     } else {
+            //         let content = inputValue[i].value;
+            //     }
+            // });
+            //     console.log(name)
+            //     console.log(age)
+
+        // 2.2 배열 구조 배열 할당 이거? 
+        // let [name, age, content] = inputValue.value;
+        // console.log(name)
+        // console.log(age)
+            // console.log(name.value, age.value, content.value)
+        // ⭐⭐⭐⭐⭐⭐ 여기에서 '구조분해할당' 을 쓰고 싶어 
+            // [참고] 
+                // 깃헙 230327 (https://github.dev/JEONGDEOKJIN/230327) 참고 ⭐⭐⭐ 
+            // [배열 구조 분해 할당 예문]
+                    // let arr2 = [1,2,3];
+                    // let [one1, two1, three1, one2] = arr2;
+
+
+    // 3. (게시판에 하나 올라가는 글) 객체로 만들기 
+
+        // 3.1 생성함수 만들기         
+            function createItemObj (_name, _age, _content) {
+
+                this.name = _name;
+                this.age = _age;
+                this.content = _content;
+            }
+
+        // 3.2 생성함수 실행 > 객체 생성 
+            
+            let item = createItemObj (name, age, content)
+
+
+    // 4. 객체를 배열에 담기 
+        objArr.push(item)
+            console.log("객체가, 배열에 잘 담긴건가👇")
+            console.log(objArr)
+    
+        // 4.1 배열 디버깅 ⭐⭐⭐⭐⭐⭐ 
+            console.log(objArr.length)  // 배열이 몇개 있는지 확인 
+            // 😥😥😥😥😥 아 진짜 이걸 확인하고 싶은데 ㅠㅠㅠㅠㅠㅠㅠㅠ 
+            // isarray 함수를 쓸 수도 있음. : https://developer-talk.tistory.com/312
+}
+
+
+function render() {
+    console.log("렌더링👍")
+
+    //  초기화?????❓❓❓
+
+    // '렌더링' 방식 
+        // 1. innerHTML 2. append 방식 ⭐⭐⭐⭐⭐
+        // append 가 좀 더 낫다고 함. 
+        
+
+    // append 방식
+    
+        // 1. 
+            let li_ = document.createElement("li")
+                // 근데, 이미, 만들어진 li 가 있지 않나? 그건 어찌하지?  
+            let ul_ = document.querySelector('#tables')
+    
+        // 2. append 로 붙이기 
+            li_.append(name, age, content)
+            ul_.append(li_)
+            
+            // [시사점]
+                // 위계 순서대로, 차곡차곡 쌓이는거!!!!! ⭐⭐⭐⭐⭐
+
+}
+
+// 그리고, 결과물에서, '점' 이 사라지지 않고 있어⭐⭐⭐ 
+
+
+
+</script>
+
+
+</html>

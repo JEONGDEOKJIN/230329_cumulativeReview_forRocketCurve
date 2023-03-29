@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    
+    <!-- 이 div1 이 있는 통째로 가져와짐 -->
+    <div id = "div1"><div> 나 태그임   </div></div>
+    
+    <!-- 클래스로 태그 가져오기 테스트 -->
+    <div class="class_div2">  클래스로 가져오는 태그  </div>
+
+    <!-- 여러 클래스 중 어떤 걸 가져올까? -> 처음걸 가져온다. -> -->
+    <div class="class_div2">  1  </div>
+    <div class="class_div2">  2  </div>
+    <div class="class_div2">  3  </div>
+    <div class="class_div2">  4  </div>
+    <div class="class_div2">  5  </div>    
+
+    <!-- 이벤트 태그 중 onclick 활용하기  -->
+    <button onclick="btnFn()"> 글자 입력!!! </button>
+        <!-- 태그의 이벤트 태그는 이벤트 속성이 여러가지 있음. 
+            그 중, onclick은 , 클릭 했을 때, 일어나는 이벤트 임. 
+            해당 태그를 클릭했을 때, 일어나는, 이벤트가 'onclick' 임. 
+            클릭하면 -> 이 함수가 실행된다!  
+
+            즉, 버튼 태그에, btnFn 함수를, 클릭 이벤트로 전달해서 -> 클릭할 때 마다, 해당 함수가 실행된다. ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 
+                -> 그 함수의 기능은? -> class_div2 태그를 변수로 가져오고 -> 각각 가져오는 태그를 콘솔에 보여준다. ⭐⭐⭐⭐⭐⭐⭐⭐ 
+
+
+            -->
+
+
+
+
+    
+
+</body>
+
+<script src="./01_생성함수, 태그선택자_이론.js"></script>
+
+</html>
