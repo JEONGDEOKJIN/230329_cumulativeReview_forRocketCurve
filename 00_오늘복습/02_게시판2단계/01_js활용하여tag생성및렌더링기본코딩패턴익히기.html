@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .box {
+
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+
+        }
+
+    </style>
+
+    <!--  -->
+    <div class="add_class">
+
+    </div>
+
+
+
+    <!-- append 로 넣어보기  -->
+    <h1> 
+
+    </h1>
+
+    <!--  -->
+    <div class="box">
+
+        <p> 나는 글자 </p>
+
+    </div>
+
+
+    <!-- form 태그는 서버에 데이터를 전달되면서 > 다시고침 된다 ⭐⭐⭐ > 이 기본 동작을 제거하고 싶을 때 e.preventdefault -->
+    <form action="">
+        <!-- button 태그의 기본 속성은 submit 이다. / 없어도 들어가 있음.  -->
+        <button type="submit" class="btn_class"> 클릭         </button>
+    </form>
+    
+
+
+</head>
+<body>
+    
+
+    
+</body>
+
+<script>
+
+
+
+// 📚 '자바스크립트로 태그를 만들고, 렌더링 하기까지의 코딩 패턴'
+
+
+    // 1. 태그를 만들고 > '변수'에 넣기 ⭐⭐ 
+        // 중요한 점 
+            // js 에서 '태그' 를 다룰 때는 '변수' 를 통해 다루어진다. ⭐⭐ 
+
+        // 태그를 만든다는 건? 무슨 의미인가? 
+            // 어떤 의미에서는 DOM 트리에서 요소(element)를 추가하는 것 
+            // 어떤 의미에서는 vscode 에서, html 파일에, <> 이렇게 생긴걸 추가하는 것
+            // HTML 는 Hyper Text Markup Language 임. 
+                // 마크업 언어는 '일반 텍스트'와 '마크업 코드(태그)'로 이루어져 있음. 
+                // 마크업 태그(코드)는 특정 요소(element) 의 '역할' 을 정의함. 
+                // 이를 통해 '마크업 언어' 는 '문서의 구조, 내용' 을 묘사한다.
+                // '문서의 구조, 내용' 은 '일련의 요소(element)' 이고, 각 요소는 태그(tag) 로 표시된다.
+                
+                // 예를 들어, 
+                    // 제목 : 오늘의 공부 
+                    // 내용 : 태그 생성에 대해서 공부하자 
+                    // 날짜 : 23년 3월 29일 
+                    // 이런 문서가 있다고 해봐 
+                // '구조' 를 안다는 건, '이 문서의 하위 hierarchy 에는 제목, 내용, 날짜' 가 있고, '제목' 의 하위에는 '이런 내용이 있구나' 라는 걸 아는 느낌. 
+                // 이렇게 '체계성' 을 표현하고, '문서에 필요한 요소(element)'를 표시하기 위해서 '태그(tag)' 가 쓰임. 
+                // 즉, 태그(tag) 를 보면 ⭐
+                    // 1) 요소(element) 를 알 수 있고 (ex) 아, 이거 제목이네, 아 이거 글 이네
+                    // 2) 체계(hierarchy) 를 알 수 있다. (ex) 아, 이거는 제목 밑에 있네. 이건 내용 의 하위요소네
+            // [결론]
+                // 태그를 만든다는건, HTML 를 사용해서, 문서의 특정 요소(element)를 만든다는 것.
+
+        // 지금 내가 하는 건? 
+            // 1) 태그를 만들 때, HTML 에 바로 적어도 됨. 
+            // 2) 지금은 '자바스크립트' 를 통해서 해볼것 임. 
+        
+        let _h1 = document.createElement('h1')
+        let _div = document.createElement('div')
+        console.log(_h1, _div)
+            // '제목' 태그를 만들거야 
+            // 근데, '거기까지 가려면' 거쳐야 하는 단계가 있어. 
+            // 그럼, 어디에서 부터 시작해? 
+                // 지금은 가장 큰 틀인 document 에서 부터 시작해. 
+
+            // 이렇게 쓴다음에, `h1` 이라는 `변수` 에 넣어준다는 점! 이 어색해. 
+                // 왜냐면, html 을 썼을 때, 태그는 그냥, 쓰면 됐으니까.
+                // 응? 근데 지금은 변수에 넣으라고 하네? -> 살짝 혼동이 온다. 
+                // 이걸 어떻게 이해? 
+                    // 지금 작성하는 곳은 'javascript' 언어야.
+                    // 이 말은, 원래, 태생적으로, html, 마크업 언어가 아니고, '다른 언어'라는 거지.
+                    // 언어가 다르면, '같은 기능' 이라고 해도, '구현 방식'이 달라. 
+                    // 따라서, 나는 html 문법에 익숙해서 볼게 아니라, javascript 의 문법에 '익숙' 해져야 해. 
+                    // '적응', '받아들여야' '익숙해야' 하는 부분.   
+                    // '익숙' 해지기 위해, 내가 아는 것과 모르는 것을 구분하는 중
+
+
+    // 2. 생성한 '태그'에 '내용' 넣기  
+        // 2.1 innerHTML 방식 : 생성한 태그, 안쪽(inner) 에, HTML 넣기 (내용 넣기) 
+        _div.innerHTML = " <p> 1) 일반텍스트가 들어갈 수 있지만, 2) 지금쓰는 <p> 태그 처럼, '태그' 도 해석 가능 </p>"
+        _h1.innerHTML = " <h1> 이건 제목1 </h1> "
+        
+        // 🔷 innerHTML 과 append 비교 
+            // innerHTML 은 문자로 들어가서 '보안' 이 취약 
+            // append 로 추가하면, DOM 트리의 노드, 이기 때문에, 보안상 문제 없음. 
+            // append 로 하면, '태그 작업을 세분화' 할 수 있음. 
+
+
+    // 3. 생성한 태그에 클래스, id 부여. 
+        _div.classList.add('new_tag')
+        
+    // 4. 생성한 태그를 특정 위치(요소)에 위치시키기 
+        document.body.append(_div)
+        document.body.append(_h1)
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</html>
