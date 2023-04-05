@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 함수 파라미터 숙제 : 
+            버튼1 누르면, '아이디 입력하세요'
+            버튼2 누르면, '비번 입력하세요'  -->
+
+    <style>
+        
+        .id-box {
+            display: none;
+            background-color: blue;
+        }
+        
+        .pw-box {
+            display: none;
+            background-color: green;
+        }
+
+    </style>
+    
+</head>
+
+
+    <!-- id 입력하세요 box -->
+    <div class="id-box" id="id-input">
+        id 입력하세요
+    </div>
+    
+    <!-- id 입력하세요 box -->
+    <div class="pw-box" id="pw-input">
+        비번 입력하세요
+    </div>
+
+
+    <button onclick="popUp('id-input')"> 버튼 1 </button>
+    <button onclick="popUp('pw-input')"> 버튼 2 </button>
+
+<body>
+
+    <script>
+
+    function popUp(idName) {
+        document.getElementById(idName).style.display = 'block'
+        
+    }
+    
+
+
+
+    </script>
+    
+
+
+    
+</body>
+</html>
